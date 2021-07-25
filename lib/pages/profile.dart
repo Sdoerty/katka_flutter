@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -13,15 +14,23 @@ class _ProfileState extends State<Profile> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Home',
+      'MAIN PAGE',
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'PROFILE',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'MESSENGER',
+      style: optionStyle,
+    ),
+    Text(
+      'PEOPLES',
+      style: optionStyle,
+    ),
+    Text(
+      'MAPS',
       style: optionStyle,
     ),
   ];
@@ -36,7 +45,38 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
+        title: Container(
+          child: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/admin.png'),
+                radius: 18.0,
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Админ',
+                    style: TextStyle(color: Colors.white),
+                  )),
+            ],
+          ),
+        ),
+        backgroundColor: Color(0xff1f282d),
+        actions: [
+          TextButton.icon(
+              onPressed: () {},
+              icon: Transform.scale(
+                  scale: 0.8, child: Image.asset('assets/services.png')),
+              label: Text(
+                'Сервисы',
+                style: TextStyle(color: Colors.white),
+              )),
+          Transform.scale(
+            scale: 0.8,
+            child: IconButton(
+                onPressed: () {}, icon: Image.asset('assets/nav-bell.png')),
+          )
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -58,7 +98,6 @@ class _ProfileState extends State<Profile> {
             label: 'Чат',
             backgroundColor: Color(0xff1f282d),
           ),
-
           BottomNavigationBarItem(
             icon: Icon(Icons.people_alt),
             label: 'Люди',
@@ -69,8 +108,6 @@ class _ProfileState extends State<Profile> {
             label: 'Карты',
             backgroundColor: Color(0xff1f282d),
           ),
-
-
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
