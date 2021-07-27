@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:katka/pages/maintable.dart';
-import 'package:katka/pages/profile.dart';
-import 'package:katka/pages/chat.dart';
-import 'package:katka/pages/peoples.dart';
-import 'package:katka/pages/maps.dart';
+import 'package:katka/pages/maintable/maintable.dart';
+import 'package:katka/pages/profile/profile.dart';
+import 'package:katka/pages/chat/chat.dart';
+import 'package:katka/pages/peoples/peoples.dart';
+import 'package:katka/pages/maps/maps.dart';
 
 void main() => runApp(Main());
 
