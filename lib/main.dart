@@ -30,6 +30,17 @@ class AllBars extends StatefulWidget {
   _AllBarsState createState() => _AllBarsState();
 }
 
+enum ProfileFarther { edit, settings, exit }
+enum ServicesFarther {
+  maps,
+  groups,
+  review,
+  partners,
+  articles,
+  projectnews,
+  callback
+}
+
 class _AllBarsState extends State<AllBars> {
   int _selectedIndex = 0;
 
@@ -59,29 +70,127 @@ class _AllBarsState extends State<AllBars> {
         title: Container(
           child: Row(
             children: [
-              CircleAvatar(
-                backgroundImage: AssetImage('assets/admin.png'),
-                radius: 18.0,
-              ),
-              TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Админ',
-                    style: TextStyle(color: Colors.white),
-                  )),
+              PopupMenuButton<ProfileFarther>(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/admin.png'),
+                      radius: 18.0,
+                    ),
+                    Padding(padding: EdgeInsets.only(right: 10.0)),
+                    Text('Админ',
+                        style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                  ],
+                ),
+                onSelected: (ProfileFarther result) {
+                  setState(() {});
+                },
+                itemBuilder: (BuildContext context) =>
+                    <PopupMenuEntry<ProfileFarther>>[
+                  const PopupMenuItem<ProfileFarther>(
+                    value: ProfileFarther.edit,
+                    child: Text('Редактировать профиль'),
+                  ),
+                  const PopupMenuItem<ProfileFarther>(
+                    value: ProfileFarther.settings,
+                    child: Text('Настройки'),
+                  ),
+                  const PopupMenuItem<ProfileFarther>(
+                    value: ProfileFarther.exit,
+                    child: Text('Выход'),
+                  ),
+                ],
+              )
             ],
           ),
         ),
         backgroundColor: Color(0xff1f282d),
         actions: [
-          TextButton.icon(
-              onPressed: () {},
-              icon: Transform.scale(
-                  scale: 0.8, child: Image.asset('assets/services.png')),
-              label: Text(
-                'Сервисы',
-                style: TextStyle(color: Colors.white),
-              )),
+          PopupMenuButton<ServicesFarther>(
+            child: Row(
+              children: [
+                Icon(Icons.apps, color: Colors.white),
+                Padding(padding: EdgeInsets.only(right: 3.0)),
+                Text('Сервисы',
+                    style: TextStyle(color: Colors.white, fontSize: 16.0))
+              ],
+            ),
+            onSelected: (ServicesFarther result) {
+              setState(() {});
+            },
+            itemBuilder: (BuildContext context) =>
+                <PopupMenuEntry<ServicesFarther>>[
+              PopupMenuItem<ServicesFarther>(
+                  value: ServicesFarther.maps,
+                  child: Row(
+                    children: [
+                      Icon(Icons.map_outlined),
+                      Padding(padding: EdgeInsets.only(right: 5.0)),
+                      Text('Карты'),
+                    ],
+                  )),
+              PopupMenuItem<ServicesFarther>(
+                value: ServicesFarther.groups,
+                child: Row(
+                  children: [
+                    Icon(Icons.groups_outlined),
+                    Padding(padding: EdgeInsets.only(right: 5.0)),
+                    Text('Группы'),
+                  ],
+                )
+              ),
+              PopupMenuItem<ServicesFarther>(
+                value: ServicesFarther.review,
+                child: Row(
+                  children: [
+                    Icon(Icons.reviews_outlined),
+                    Padding(padding: EdgeInsets.only(right: 5.0)),
+                    Text('Обзоры мест'),
+                  ],
+                )
+              ),
+              PopupMenuItem<ServicesFarther>(
+                value: ServicesFarther.partners,
+                child: Row(
+                  children: [
+                    Icon(Icons.shopping_basket_outlined),
+                    Padding(padding: EdgeInsets.only(right: 5.0)),
+                    Text('Партнёры'),
+                  ],
+                )
+              ),
+              PopupMenuItem<ServicesFarther>(
+                value: ServicesFarther.articles,
+                child: Row(
+                  children: [
+                    Icon(Icons.article_outlined),
+                    Padding(padding: EdgeInsets.only(right: 5.0)),
+                    Text('Статьи'),
+                  ],
+                )
+              ),
+              PopupMenuItem<ServicesFarther>(
+                value: ServicesFarther.projectnews,
+                child: Row(
+                  children: [
+                    Icon(Icons.new_releases_outlined),
+                    Padding(padding: EdgeInsets.only(right: 5.0)),
+                    Text('Новости проекта'),
+                  ],
+                )
+              ),
+              PopupMenuItem<ServicesFarther>(
+                value: ServicesFarther.callback,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Обратная связь'),
+                  ],
+                )
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.only(right: 10.0)),
           Transform.scale(
             scale: 0.8,
             child: IconButton(
