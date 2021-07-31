@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:katka/pages/login.dart';
+import 'package:katka/auth.dart';
 
 void main() async => runApp(Main());
 
@@ -14,7 +15,7 @@ class Main extends StatelessWidget {
       // routes: {
       //   '/': (context) =>Profile(),
       // },
-      home: Login(),
+      home: Login(auth: new Auth()),
     );
   }
 }

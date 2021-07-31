@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import '../auth.dart';
 import 'package:katka/pages/mainApp/mainApp.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  final BaseAuth auth;
+
+  const Login({Key? key, required this.auth}) : super(key: key);
+
 
   @override
   _LoginState createState() => _LoginState();
@@ -34,14 +38,16 @@ class _LoginState extends State<Login> {
       try {
         await Firebase.initializeApp();
         if (_formType == FormType.login) {
-          UserCredential user = await FirebaseAuth.instance
-              .signInWithEmailAndPassword(email: _email, password: _password);
-          print('Signed in !!!!!!!!!!');
+          String userID = await widget.auth.signIn(_email, _password);
+          // UserCredential user = await FirebaseAuth.instance
+          //     .signInWithEmailAndPassword(email: _email, password: _password);
+          print('Signed in $userID');
         } else {
-          UserCredential user = await FirebaseAuth.instance
-              .createUserWithEmailAndPassword(
-                  email: _email, password: _password);
-          print('Registered user!!!!!!!!!!!!!!!!!!');
+          String userID = await widget.auth.signUp(_email, _password);
+          // UserCredential user = await FirebaseAuth.instance
+          //     .createUserWithEmailAndPassword(
+          //         email: _email, password: _password);
+          print('Registered user $userID');
 
         }
       } catch (e) {
