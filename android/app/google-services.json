@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "926732771693",
-    "project_id": "katka-app",
-    "storage_bucket": "katka-app.appspot.com"
+    "project_number": "703650502299",
+    "project_id": "katka-katka",
+    "storage_bucket": "katka-katka.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:926732771693:android:78f5c7b2c68a4cf0f63a64",
+        "mobilesdk_app_id": "1:703650502299:android:63894111f532200eb8583e",
         "android_client_info": {
           "package_name": "com.katka.katka"
         }
       },
       "oauth_client": [
         {
-          "client_id": "926732771693-ooumripcg7aj3dhg6ra9dkiessg6qvtq.apps.googleusercontent.com",
+          "client_id": "703650502299-k0moe17977lmr3fr4i50771krk7ea9j9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBiI94Ogta7rktN4lfdPGfjg48t6FmWuFg"
+          "current_key": "AIzaSyC49XGNwtp1L9OxuPz7G6Yy7HPfYhiHB6c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "926732771693-ooumripcg7aj3dhg6ra9dkiessg6qvtq.apps.googleusercontent.com",
+              "client_id": "703650502299-k0moe17977lmr3fr4i50771krk7ea9j9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
