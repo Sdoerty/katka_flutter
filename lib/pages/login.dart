@@ -6,8 +6,9 @@ import 'package:katka/pages/mainApp/mainApp.dart';
 
 class Login extends StatefulWidget {
   final BaseAuth auth;
+  final VoidCallback onSignedIn;
 
-  const Login({Key? key, required this.auth}) : super(key: key);
+  const Login({Key? key, required this.auth, required this.onSignedIn}) : super(key: key);
 
 
   @override
@@ -48,8 +49,8 @@ class _LoginState extends State<Login> {
           //     .createUserWithEmailAndPassword(
           //         email: _email, password: _password);
           print('Registered user $userID');
-
         }
+        widget.onSignedIn();
       } catch (e) {
         print('Error: $e');
       }
