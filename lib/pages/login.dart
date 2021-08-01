@@ -67,26 +67,26 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
-      child: Container(
-        padding: EdgeInsets.all(28.0),
-        child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-              Column(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: buildSubmitButtons(),
-                  ),
-                ],
-              )
-            ])),
-      ),
-    ));
+          child: Container(
+            padding: EdgeInsets.all(28.0),
+            child: Form(
+                key: formKey,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: buildSubmitButtons(),
+                          ),
+                        ],
+                      )
+                    ])),
+          ),
+        ));
   }
 
   List<Widget> buildSubmitButtons() {
@@ -110,14 +110,14 @@ class _LoginState extends State<Login> {
         TextFormField(
           decoration: InputDecoration(labelText: 'Email'),
           validator: (value) =>
-          value!.isEmpty ? 'Поле Email не может быть пустым' : null,
+              value!.isEmpty ? 'Поле Email не может быть пустым' : null,
           onSaved: (value) => _email = value!,
         ),
         TextFormField(
           decoration: InputDecoration(labelText: 'Password'),
           obscureText: true,
           validator: (value) =>
-          value!.isEmpty ? 'Поле Password не может быть пустым' : null,
+              value!.isEmpty ? 'Поле Password не может быть пустым' : null,
           onSaved: (value) => _password = value!,
         ),
         Padding(padding: EdgeInsets.only(top: 45.0)),
@@ -152,14 +152,14 @@ class _LoginState extends State<Login> {
         TextFormField(
           decoration: InputDecoration(labelText: 'Email'),
           validator: (value) =>
-          value!.isEmpty ? 'Поле Email не может быть пустым' : null,
+              value!.isEmpty ? 'Поле Email не может быть пустым' : null,
           onSaved: (value) => _email = value!,
         ),
         TextFormField(
           decoration: InputDecoration(labelText: 'Password'),
           obscureText: true,
           validator: (value) =>
-          value!.isEmpty ? 'Поле Password не может быть пустым' : null,
+              value!.isEmpty ? 'Поле Password не может быть пустым' : null,
           onSaved: (value) => _password = value!,
         ),
         Padding(padding: EdgeInsets.only(top: 45.0)),

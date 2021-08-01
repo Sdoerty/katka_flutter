@@ -83,7 +83,7 @@ class _MainAppState extends State<MainApp> {
                       children: [
                         TextButton(
                             onPressed: (){
-                              Navigator.pushNamed(context, '/editProfile');
+                              Navigator.pushReplacementNamed(context, '/editProfile');
                             },
                             child: Text('Редактировать профиль'))
                       ],
