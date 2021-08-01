@@ -5,6 +5,7 @@ import 'package:katka/pages/mainApp/profile/profile.dart';
 import 'package:katka/pages/mainApp/chat/chat.dart';
 import 'package:katka/pages/mainApp/peoples/peoples.dart';
 import 'package:katka/pages/mainApp/groups/groups.dart';
+import 'editProfile.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({Key? key}) : super(key: key);
@@ -21,6 +22,10 @@ class _MainAppState extends State<MainApp> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late User user;
+
+  /*
+  * States to display username and email .....
+  * */
 
   @override
   void initState() {
@@ -71,24 +76,38 @@ class _MainAppState extends State<MainApp> {
                         style: TextStyle(color: Colors.white, fontSize: 16.0)),
                   ],
                 ),
-                onSelected: (ProfileFarther result) {
-                  setState(() {});
-                },
-                itemBuilder: (BuildContext context) =>
-                    <PopupMenuEntry<ProfileFarther>>[
-                  const PopupMenuItem<ProfileFarther>(
-                    value: ProfileFarther.edit,
-                    child: Text('Редактировать профиль'),
-                  ),
-                  const PopupMenuItem<ProfileFarther>(
-                    value: ProfileFarther.settings,
-                    child: Text('Настройки'),
-                  ),
-                  const PopupMenuItem<ProfileFarther>(
-                    value: ProfileFarther.exit,
-                    child: Text('Выход'),
-                  ),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: 
+                    Column(
+                      children: [
+                        TextButton(
+                            onPressed: (){
+                              Navigator.pushNamed(context, '/editProfile');
+                            },
+                            child: Text('Редактировать профиль'))
+                      ],
+                    ),
+                  )
                 ],
+                // onSelected: (ProfileFarther result) {
+                //   setState(() {});
+                // },
+                // itemBuilder: (BuildContext context) =>
+                //     <PopupMenuEntry<ProfileFarther>>[
+                //   const PopupMenuItem<ProfileFarther>(
+                //     value: ProfileFarther.edit,
+                //     child: Text('Редактировать профиль'),
+                //   ),
+                //   const PopupMenuItem<ProfileFarther>(
+                //     value: ProfileFarther.settings,
+                //     child: Text('Настройки'),
+                //   ),
+                //   const PopupMenuItem<ProfileFarther>(
+                //     value: ProfileFarther.exit,
+                //     child: Text('Выход'),
+                //   ),
+                // ],
               )
             ],
           ),
