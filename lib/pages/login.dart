@@ -36,19 +36,12 @@ class _LoginState extends State<Login> {
 
   void validateAndSubmut() async {
     if (validateAndSave()) {
+      await Firebase.initializeApp();
       try {
-        await Firebase.initializeApp();
         if (_formType == FormType.login) {
-          String userID = await widget.auth.signIn(_email, _password);
-          // UserCredential user = await FirebaseAuth.instance
-          //     .signInWithEmailAndPassword(email: _email, password: _password);
-          print('Signed in $userID');
+          await widget.auth.signIn(_email, _password);
         } else {
-          String userID = await widget.auth.signUp(_email, _password);
-          // UserCredential user = await FirebaseAuth.instance
-          //     .createUserWithEmailAndPassword(
-          //         email: _email, password: _password);
-          print('Registered user $userID');
+          await widget.auth.signUp(_email, _password);
         }
         widget.onSignedIn();
       } catch (e) {

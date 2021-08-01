@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
 
 abstract class BaseAuth {
@@ -22,6 +23,7 @@ class Auth implements BaseAuth {
   }
 
   Future<String> currentUser()async{
+    await Firebase.initializeApp();
     User user = await FirebaseAuth.instance.currentUser!;
     return user.uid;
   }
