@@ -1,18 +1,23 @@
 import 'dart:io';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:katka/auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
 
   @override
   Widget build(BuildContext context) {

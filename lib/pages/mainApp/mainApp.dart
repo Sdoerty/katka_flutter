@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:katka/pages/mainApp/maintable/maintable.dart';
 import 'package:katka/pages/mainApp/profile/profile.dart';
@@ -17,6 +18,20 @@ enum ServicesFarther { maps, review, articles, partners, projectnews, callback }
 
 class _MainAppState extends State<MainApp> {
   int _selectedIndex = 0;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  late User user;
+
+  @override
+  void initState() {
+    super.initState();
+    initUser();
+  }
+
+  initUser() async {
+    user = await _auth.currentUser!;
+    setState(() {});
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -52,7 +67,7 @@ class _MainAppState extends State<MainApp> {
                       radius: 18.0,
                     ),
                     Padding(padding: EdgeInsets.only(right: 10.0)),
-                    Text('Админ',
+                    Text('${user.email}',
                         style: TextStyle(color: Colors.white, fontSize: 16.0)),
                   ],
                 ),
