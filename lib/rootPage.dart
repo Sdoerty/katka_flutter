@@ -32,6 +32,12 @@ class _RootPageState extends State<RootPage> {
     });
   }
 
+  void _signedOut(){
+    setState((){
+      authStatus = AuthStatus.notSignIn;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,7 @@ class _RootPageState extends State<RootPage> {
         return Login(auth: widget.auth, onSignedIn: _signedIn,);
       case AuthStatus.signIn:
         return Container(
-          child: MainApp()
+          child: MainApp(auth: widget.auth, onSignedOut: _signedOut ,)
         );
     }
   }

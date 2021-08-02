@@ -6,9 +6,12 @@ import 'package:katka/pages/mainApp/chat/chat.dart';
 import 'package:katka/pages/mainApp/peoples/peoples.dart';
 import 'package:katka/pages/mainApp/groups/groups.dart';
 import 'editProfile.dart';
+import 'package:katka/auth.dart';
 
 class MainApp extends StatefulWidget {
-  const MainApp({Key? key}) : super(key: key);
+  const MainApp({Key? key, required this.auth, required this.onSignedOut}) : super(key: key);
+  final BaseAuth auth;
+  final VoidCallback onSignedOut;
 
   @override
   _MainAppState createState() => _MainAppState();
@@ -22,6 +25,15 @@ class _MainAppState extends State<MainApp> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late User user;
+
+  void _signOut() async{
+    try{
+      await widget.auth.signOut();
+      widget.onSignedOut();
+    }catch(e){
+
+    }
+  }
 
   /*
   * States to display username and email .....
@@ -78,14 +90,34 @@ class _MainAppState extends State<MainApp> {
                 ),
                 itemBuilder: (context) => [
                   PopupMenuItem(
-                    child: 
+                    child: Column(
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(
+                                  context, '/editProfile');
+                            },
+                            child: Text('Редактировать профиль'))
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child: Column(
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                            },
+                            child: Text('Настройки'))
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child:
                     Column(
                       children: [
                         TextButton(
-                            onPressed: (){
-                              Navigator.pushReplacementNamed(context, '/editProfile');
-                            },
-                            child: Text('Редактировать профиль'))
+                            onPressed: _signOut,
+                            child: Text('Выход'))
                       ],
                     ),
                   )
