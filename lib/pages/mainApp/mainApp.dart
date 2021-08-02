@@ -25,6 +25,7 @@ class _MainAppState extends State<MainApp> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late User user;
+  
 
   void _signOut() async{
     try{
